@@ -2,12 +2,12 @@
 DIR = '/youtube/'
 DL = '/youtube-dl'
 DLER = '/usr/bin/youtube-dl'
-
 STATUS_NEW      = "new"
 STATUS_WORKING  = "processing"
 STATUS_FINISHED = "finished"
-
-PROXY = "export http_proxy=http://192.168.0.205:1077"
+ 
+LISTEN_PORT = 8001
+#PROXY = "export http_proxy=http://192.168.0.205:1077;"
 
 require 'sinatra'
 
@@ -103,7 +103,7 @@ class UDLER
   end
 
   def dl job
-    `#{PROXY}; cd #{DIR}; /usr/bin/youtube-dl -t #{job[:job]}`
+    `#{PROXY} cd #{DIR}; /usr/bin/youtube-dl -t #{job[:job]}`
     @q.finish_a_job job[:id]
   end
 
@@ -117,6 +117,7 @@ u=UDLER.new
 Thread.new{
   u.do_work
 }
+set :port, LISTEN_PORT
 
 get '/' do
   msg = "<h1>Welcome to youtube-dl-daemon by c2h2.</h1>\n"
