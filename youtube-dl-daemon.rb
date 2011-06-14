@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 DIR = '/youtube/'
-DL = '/youtube-dl'
 DLER = '/usr/bin/youtube-dl'
 STATUS_NEW      = "new"
 STATUS_WORKING  = "processing"
@@ -55,9 +54,9 @@ class IntJob < Job
     str+="######### START OF YOUTUBE DIR #{DIR} #############\n"
     str+=`ls -ashl #{DIR}`
     str+="\n######### Job Queue #############\n"
-    str+="id      job    status   created_at        started_at    finished_at  "
+    str+="id      job    status   created_at        started_at    finished_at\n"
     @que.each do |job|
-      str = str + "#{job[:id]} #{job[:job]} #{job[:status]} #{job[:created_at]} #{job[:started_at]}  #{job[:finished_at]}"
+      str = str + "#{job[:id]} #{job[:job]} #{job[:status]} #{job[:created_at]} #{job[:started_at]}  #{job[:finished_at]}\n"
     end
     str+="\n\n######### Add a new job #############\n"
 
