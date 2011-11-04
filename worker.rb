@@ -7,8 +7,8 @@ def log str
   puts Time.now.to_s + "|" + str
 end
 
+log "Started."
 loop do
-  log "Started."
   vids = Vid.where(dl_ed: false)
   vids.each do |v|
     log "DLing #{v.url}"
