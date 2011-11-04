@@ -1,0 +1,26 @@
+==Intro==
+This is a wrap of python youtube-dl, it enables you to dl multiple youtube files simultaneously via very simple web interface (also via proxy if you'd like to). if you like it or want to help to develop. email me or msg me. email: "moc.liamg@oacgniliy".reverse
+
+==Prerequisite==
+ruby19 (better thread), install by `rvm install 1.9.2`
+sinatra gem, install by `gem install sinatra`
+youtube-dl(v 2011.3.29) , install by `apt-get install youtube-dl` or mac `brew install youtube-dl` or `wget to /usr/bin/youtube-dl`
+
+
+==How to use==
+start the daemon by `ruby youtube-dl-daemon.rb`, (you make make a system service)
+visit http://localhost:8001 on you browser
+add url and submit, video will start download.
+
+==Tweak==
+change the youtube-dl-daemon.rb file to change:
+*the downloading directory
+*proxy settings
+*wanted filenames
+
+==Other==
+thanks to youtube-dl and all of its authors
+youtube-dl doc: http://rg3.github.com/youtube-dl/documentation.html
+
+==Disclaimer==
+It is just a wrap of youtube-dl, all the files downloaded must stick to video provider's copyright premissions. and this code is provided as is, I DO NOT take any responsibilities due to any consequences to any parties. If this piece of code might or will make loss to anyone, you MSUT not use it.
