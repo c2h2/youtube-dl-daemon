@@ -13,6 +13,8 @@ class Vid
   field :dl_ed, type: Boolean, default: false
   field :fn,    type: String
 
+  index :url, unique: true
+
   def dl_to dir
     `cd #{dir}; youtube-dl -t '#{self.url}'`
   end
