@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ytid:</b>
+  <%= @video.ytid %>
+</p>
+
+<p>
+  <b>ULR:</b>
+  <%= @video.url %>
+</p>
+
+
+<p>
+  <b>Title:</b>
+  <%= @video.title %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @video.desc %>
+</p>
+
+<p>
+  <b>Fn:</b>
+  <%= @video.fn %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @video.size %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @video.status %>
+</p>
+
+<p>
+  <b>Processing:</b>
+  <%= @video.processing %>
+</p>
+
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>

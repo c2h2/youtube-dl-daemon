@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ytid: MyString
+  title: MyString
+  desc: MyString
+  fn: MyString
+  size: 
+  status: 
+  processing: false
+
+two:
+  ytid: MyString
+  title: MyString
+  desc: MyString
+  fn: MyString
+  size: 
+  status: 
+  processing: false
