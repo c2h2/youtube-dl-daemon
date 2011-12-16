@@ -1,4 +1,6 @@
 Www::Application.routes.draw do
+  resources :pages
+
   resources :videos
 
   # The priority is based upon order of creation:

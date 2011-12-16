@@ -11,7 +11,7 @@ class Video
   field :status, :type => Integer
   field :processing, :type => Boolean
   field :error
-
+  has_many_and_belongs_to_many :pages
 
   def is_youtube?
     #http://stackoverflow.com/questions/8306963/regular-expression-youtube-url
