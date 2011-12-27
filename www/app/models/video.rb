@@ -9,13 +9,14 @@ class Video
   field :fn, :type => String
   field :size, :type => Integer
   field :status, :type => Integer
+  field :to_dl, :type => Boolean, :default => true
   field :processing, :type => Boolean
   field :error
-  has_many_and_belongs_to_many :pages
+  has_and_belongs_to_many :pages
 
-  def is_youtube?
+  def self.is_youtube? url
     #http://stackoverflow.com/questions/8306963/regular-expression-youtube-url
-    (self.url =~ /^http:\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=\w+)(?:[^\s?]+)?$/) == 0
+    (url =~ /^http:\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=\w+)(?:[^\s?]+)?$/) == 0
   end
 
   def get_ytid
@@ -37,21 +38,21 @@ class Video
     hash
   end
   
-  def self.save_new_video vid
-    ytid = vid.get_ytid
+  def save_new_video
+    ytid = self.get_ytid
     if Video.where( ytid: ytid).count == 0
-      if vid.is_youtube?
-        if vid.ytid.nil? or vid.ytid.length ==0
-          vid.ytid = vid.get_ytid
+      if Video.is_youtube?(self.url)
+        if self.ytid.nil? or self.ytid.length ==0
+          self.ytid = self.get_ytid
         end
-        vid.save
+        self.save
         ret = true
       else
-        vid.error = "NOT saved, NOT a youtube video url or ytid."
+        self.error = "NOT saved, NOT a youtube video url or ytid."
         ret =  false
       end
     else
-      vid.error = "NOT saved, duplicated Video."
+      self.error = "NOT saved, duplicated Video."
       ret = false
     end
     ret 
@@ -64,5 +65,5 @@ class Video
       return self.url
     end
   end
-  
+
 end
