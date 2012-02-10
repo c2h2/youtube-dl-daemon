@@ -30,15 +30,18 @@ end
 get '/new' do
   str =""
   url = params[:url]
-  unless valid_url? url
+  if !valid_url? url
     str = wrap "INVALID URL"
+  elsif Vid.where(url:url).length > 0
+    #already exists
+    str = wrap "Duplicated."
   else
     v=Vid.new
     v.url = url
     v.save
     str = "SAVED. <a href='/'>Home</a>"
   end
-  str 
+  str
 end
 
 get '/flush' do
